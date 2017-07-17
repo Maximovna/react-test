@@ -1,22 +1,28 @@
-
 export const FILTER = 'FILTER';
-export const DELETE = 'DELETE'
+export const DELETE = 'DELETE';
 
-export const filters = (value) => {
-  return {type: FILTER, payload: value}
-}
+export const filters = (value) => ({ type: FILTER, payload: value });
+export const deleteItem = (data) => ({ type: DELETE, payload: data });
 
 export function doFilter(data, pattern) {
-  let tmp = [];
-  data.forEach(function(value) {
-    if (value.name.indexOf(pattern) !== -1)
+  if (!pattern) {
+    return filters(data);
+  }
+  const tmp = [];
+  data.forEach((value) => {
+    if (value.name.indexOf(pattern) !== -1) {
       tmp.push(value);
-
     }
-  )
-  return filters(tmp)
+  });
+  return filters(tmp);
 }
 
-export const deleteItem = (data) => {
-  return {type: DELETE, payload: data}
+export function deleteHandler(array, elem) {
+  const tmp = [];
+  array.forEach(value => {
+    if (elem.id !== value.id) {
+      tmp.push(value);
+    }
+  });
+  return deleteItem(tmp);
 }
