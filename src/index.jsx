@@ -9,8 +9,7 @@ import configureStore from './store/configureStore'
 import { Router, Route, IndexRoute, browserHistory} from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import App from './components/App'
-import InputNameData from './containers/setName'
-import InputNumberData from './containers/setNumber'
+import SetList from './containers/SetList'
 import NotFound from './common/404';
 
 const store = configureStore({})
@@ -20,8 +19,7 @@ render(
     <Provider store={store}>
       <Router history={history}>
         <Route path="/" component={App}>
-          <IndexRoute component={InputNameData}/>
-          <IndexRoute component={InputNumberData}/>
+          <IndexRoute component={SetList}/>
         </Route>
         <Route path="*" component={NotFound}/>
       </Router>

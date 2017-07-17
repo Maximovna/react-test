@@ -8,10 +8,7 @@ export default class Routes extends Component {
     render() {
         return (
           <Route path="/" component={App}>
-              <IndexRoute component={Nameinput}/>
-              <IndexRoute component={NumberInput}/>
-              <Route path="name" component={Nameinput}/>
-              <Route path="number" component={NumberInput}/>
+              <IndexRoute component={List}/>
           </Route>
           <Route path="*" component={NotFound}/>
         );

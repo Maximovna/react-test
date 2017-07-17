@@ -1,37 +1,56 @@
-import {SET_NAME, SET_NUMBER} from '../actions';
-
+import {FILTER, DELETE} from '../actions';
 
 const initialState = {
   data: [
     {
-      name: '',
-      number: null
+      id: 1,
+      image: "http://via.placeholder.com/150x150/",
+      name: 'Matvei',
+      number: + 375446669966
+    }, {
+      id: 2,
+      image: "http://via.placeholder.com/150x150/",
+      name: 'Maria',
+      number: + 375449996699
+    }, {
+      id: 3,
+      image: "http://via.placeholder.com/150x150/",
+      name: 'Valera',
+      number: + 375443336669
+    }, {
+      id: 4,
+      image: "http://via.placeholder.com/150x150/",
+      name: 'FurryGod',
+      number: + 375299090900
+    }, {
+      id: 5,
+      image: "http://via.placeholder.com/150x150/",
+      name: 'Siel Phantomhive',
+      number: + 375266666900
     }
-  ]
+  ],
+  filteredData: [],
 }
 
 const contactList = (state = initialState, action) => {
   switch (action.type) {
-    case SET_NAME:
+    case FILTER:
       return {
         ...state,
-        data: {
-          name: action.payload
-
-        }
-
+        filteredData: action.payload
       }
-      case SET_NUMBER:
+
+    case DELETE:
       return {
-          ...state,
-          data: {
-            number: action.payload
-
-          }
-        }
-
-        default: return state
+        ...state,
+        filteredData: [
+            state.data.slice(0, action.payload.index),
+            state.data.slice(action.payload.index + 1)
+        ]
       }
+    default:
+      return state
   }
+}
 
-  export default contactList
+export default contactList
