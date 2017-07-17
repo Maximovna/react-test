@@ -8,9 +8,10 @@ export default class Routes extends Component {
     render() {
         return (
           <Route path="/" component={App}>
-              <IndexRoute component={List}/>
+              <IndexRoute component={List} />
+              <Route path="*" component={NotFound} />
           </Route>
-          <Route path="*" component={NotFound}/>
+
         );
     }
 }
