@@ -6,7 +6,8 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import configureStore from './store/configureStore';
 import App from './components/App';
 import SetList from './containers/SetList';
-// import Form from './components/Form';
+import Edit from './containers/Edit';
+import Add from './containers/Add';
 import NotFound from './common/404';
 
 const store = configureStore({});
@@ -17,6 +18,8 @@ render(
     <Router history={history}>
       <Route path="/" component={App}>
         <IndexRoute component={SetList} />
+        <Route path="change/:id" component={Edit} />
+        <Route path="add" component={Add} />
       </Route>
       <Route path="*" component={NotFound} />
     </Router>

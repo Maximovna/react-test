@@ -1,17 +1,11 @@
 export const DELETE = 'DELETE';
 export const FILTER = 'FILTER';
-// export const ADD = 'ADD';
+export const ADD = 'ADD';
+export const EDIT = 'EDIT';
 
 export const deleteItem = (list) => ({ type: DELETE, payload: list });
-
-export function filterList(visibilityFilter) {
-  return {
-    type: FILTER,
-    payload: visibilityFilter,
-  };
-}
-
-export function deleteHandler(array, elem) {
+export const filterList = (visibilityFilter) => ({ type: FILTER, payload: visibilityFilter });
+export const deleteHandler = (array, elem) => {
   const tmp = [];
   array.forEach(value => {
     if (elem.id !== value.id) {
@@ -19,14 +13,6 @@ export function deleteHandler(array, elem) {
     }
   });
   return deleteItem(tmp);
-}
-
-// export function addData(array, elem) {
-//   const tmp = [];
-//   array.forEach(value => {
-//     if (!value.id) {
-//       tmp.push(elem);
-//     }
-//   });
-//   return addItem(tmp);
-// }
+};
+export const addItem = (newElem) => ({ type: ADD, payload: newElem });
+export const editItem = (elem) => ({ type: EDIT, payload: elem });

@@ -2,21 +2,23 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
 class List extends React.Component {
-  constructor(props) {
-    super();
-    this.doFilter = props.setFilter;
-    this.deleteItem = props.setDeletion;
+
+  filterHadler = e => {
+    this.props.setFilter(e.target.value);
   }
 
+  deletionHandler = (list) => {
+    this.props.setDeletion(this.props.contactList, list);
+  }
   render() {
     return (
       <div>
         <input
           className="form-control"
           placeholder="Who are you looking for?"
-          onChange={(e) => this.doFilter(e.target.value)}
+          onChange={this.filterHadler}
         />
-        <button className="add"><Link to="change"> New </Link></button>
+        <button className="add"><Link to="add"> New </Link></button>
         <ul className="list">
           {this.props.contactList
             .filter(list => list.name.indexOf(this.props.visibilityFilter) !== -1)
@@ -27,10 +29,11 @@ class List extends React.Component {
                 <button
                   key={list.id}
                   className="delete-item"
-                  onClick={() => this.deleteItem(this.props.contactList, list)}
+                  onClick={() => this.deletionHandler(list)}
                 >
               Delete Contact
               </button>
+                <button className="edit"><Link to={`/change/${list.id}`}> Edit </Link></button>
               </li>
           ))}
         </ul>

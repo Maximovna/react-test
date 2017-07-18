@@ -1,29 +1,29 @@
-import { FILTER, DELETE, ADD } from '../actions';
+import { FILTER, DELETE, ADD, EDIT } from '../actions';
 
 const initialState = {
   list: [
     {
-      id: 1,
+      id: 0,
       image: 'http://via.placeholder.com/150x150/',
       name: 'Matvei',
       number: '+375446669966',
     }, {
-      id: 2,
+      id: 1,
       image: 'http://via.placeholder.com/150x150/',
       name: 'Maria',
       number: '+375449996699',
     }, {
-      id: 3,
+      id: 2,
       image: 'http://via.placeholder.com/150x150/',
       name: 'Valera',
       number: '+375443336669',
     }, {
-      id: 4,
+      id: 3,
       image: 'http://via.placeholder.com/150x150/',
       name: 'FurryGod',
       number: '+375299090900',
     }, {
-      id: 5,
+      id: 4,
       image: 'http://via.placeholder.com/150x150/',
       name: 'Siel Phantomhive',
       number: '+375266666900',
@@ -50,6 +50,13 @@ const listReducer = (state = initialState, action) => {
         list: action.payload,
 
       };
+    case EDIT:
+      return {
+        ...state,
+        list: action.payload,
+
+      };
+
     default:
       return state;
   }
