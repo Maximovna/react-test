@@ -9,11 +9,11 @@ class Form extends React.Component {
     newArray.push(this.props.elem);
     this.props.setNew(newArray);
   }
-  // handleChange() {
-  //   const changedArray = this.props.contactList;
-  //   changedArray.splice(this.props.routeParams.id, this.props.elem);
-  //   this.props.setChanges(changedArray);
-  // }
+  handleChange() {
+    const changedArray = this.props.contactList;
+    changedArray.splice(this.props.routeParams.id, 1, this.props.elem);
+    this.props.setChanges(changedArray);
+  }
   render() {
     return (
       <div>
@@ -39,11 +39,15 @@ class Form extends React.Component {
         />
         <button
           className="submit"
-          onClick={() => { (this.props.routeParams.id) ? this.handleChange() : this.handleSubmit(); }}
+          onClick={() => {
+            (this.props.routeParams.id) ? this.handleChange() : this.handleSubmit();
+          }}
         >
+          <Link to="/">
         Submit
+        </Link>
         </button>
-        <Link to="/"> back </Link>
+        <Link to="/"> Back </Link>
       </div>
     );
   }
