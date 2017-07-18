@@ -1,25 +1,37 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 
 class List extends React.Component {
-  componentDidMount() {
-    this.props.setFilter(this.props.initData);
+  constructor(props) {
+    super();
+    this.doFilter = props.setFilter;
+    this.deleteItem = props.setDeletion;
   }
 
   render() {
     return (
       <div>
-        <input className="form-control" placeholder="Who are you looking for?" onChange={(e) => this.props.setFilter(this.props.initData, e.target.value)} />
-        <ul className="init-list">
-          {this.props.filteredData.map((data) => (
-            <li key={data.id}><img src={data.image} alt="" />
-              <p>Name: {data.name}.</p>
-              <p>Phone Number: {data.number}</p>
-              <button
-                key={data.id} className="delete-item" onClick={() => this.props.setDeletion(this.props.initData, data)}
-              >
+        <input
+          className="form-control"
+          placeholder="Who are you looking for?"
+          onChange={(e) => this.doFilter(e.target.value)}
+        />
+        <button className="add"><Link to="change"> New </Link></button>
+        <ul className="list">
+          {this.props.contactList
+            .filter(list => list.name.indexOf(this.props.visibilityFilter) !== -1)
+            .map((list) => (
+              <li key={list.id}><img src={list.image} alt="" />
+                <p>Name: {list.name}.</p>
+                <p>Phone Number: {list.number}</p>
+                <button
+                  key={list.id}
+                  className="delete-item"
+                  onClick={() => this.deleteItem(this.props.contactList, list)}
+                >
               Delete Contact
               </button>
-            </li>
+              </li>
           ))}
         </ul>
 
@@ -29,10 +41,10 @@ class List extends React.Component {
 }
 
 List.propTypes = {
-  setFilter: PropTypes.func,
-  initData: PropTypes.array,
-  filteredData: PropTypes.array,
+  contactList: PropTypes.array,
+  visibilityFilter: PropTypes.string,
   setDeletion: PropTypes.func,
+  setFilter: PropTypes.func,
 };
 
 export default List;

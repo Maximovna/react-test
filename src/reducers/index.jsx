@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 
-import contactList from './contactList';
+import listReducer from './listReducer';
 
-const rootReducer = combineReducers({ routing: routerReducer, contactList });
+const rootReducer = combineReducers({ routing: routerReducer, listReducer });
 
 export default rootReducer;

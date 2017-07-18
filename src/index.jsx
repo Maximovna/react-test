@@ -6,6 +6,7 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import configureStore from './store/configureStore';
 import App from './components/App';
 import SetList from './containers/SetList';
+// import Form from './components/Form';
 import NotFound from './common/404';
 
 const store = configureStore({});
@@ -21,3 +22,5 @@ render(
     </Router>
   </Provider>, document.getElementById('root')
 );
+
+//    <Route path="change" component={Form} />

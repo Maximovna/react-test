@@ -1,18 +1,20 @@
 import { connect } from 'react-redux';
 import List from '../components/List';
-import { doFilter, deleteHandler } from '../actions';
+import { deleteHandler, filterList } from '../actions';
 
 function mapStateToProps(state) {
-  return { initData: state.contactList.data, filteredData: state.contactList.filteredData };
+  return { contactList: state.listReducer.list,
+    visibilityFilter: state.listReducer.visibilityFilter,
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    setFilter: (data, value) => {
-      dispatch(doFilter(data, value));
+    setDeletion: (list, elem) => {
+      dispatch(deleteHandler(list, elem));
     },
-    setDeletion: (data, elem) => {
-      dispatch(deleteHandler(data, elem));
+    setFilter: (visibilityFilter) => {
+      dispatch(filterList(visibilityFilter));
     },
   };
 }

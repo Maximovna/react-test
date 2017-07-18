@@ -1,20 +1,14 @@
-export const FILTER = 'FILTER';
 export const DELETE = 'DELETE';
+export const FILTER = 'FILTER';
+// export const ADD = 'ADD';
 
-export const filters = (value) => ({ type: FILTER, payload: value });
-export const deleteItem = (data) => ({ type: DELETE, payload: data });
+export const deleteItem = (list) => ({ type: DELETE, payload: list });
 
-export function doFilter(data, pattern) {
-  if (!pattern) {
-    return filters(data);
-  }
-  const tmp = [];
-  data.forEach((value) => {
-    if (value.name.indexOf(pattern) !== -1) {
-      tmp.push(value);
-    }
-  });
-  return filters(tmp);
+export function filterList(visibilityFilter) {
+  return {
+    type: FILTER,
+    payload: visibilityFilter,
+  };
 }
 
 export function deleteHandler(array, elem) {
@@ -26,3 +20,13 @@ export function deleteHandler(array, elem) {
   });
   return deleteItem(tmp);
 }
+
+// export function addData(array, elem) {
+//   const tmp = [];
+//   array.forEach(value => {
+//     if (!value.id) {
+//       tmp.push(elem);
+//     }
+//   });
+//   return addItem(tmp);
+// }

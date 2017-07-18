@@ -1,7 +1,7 @@
-import { FILTER, DELETE } from '../actions';
+import { FILTER, DELETE, ADD } from '../actions';
 
 const initialState = {
-  data: [
+  list: [
     {
       id: 1,
       image: 'http://via.placeholder.com/150x150/',
@@ -29,26 +29,30 @@ const initialState = {
       number: '+375266666900',
     },
   ],
-  filteredData: [],
+  visibilityFilter: '',
 };
 
-const contactList = (state = initialState, action) => {
+const listReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FILTER:
-      return {
-        ...state,
-        filteredData: action.payload,
-      };
-
     case DELETE:
       return {
         ...state,
-        data: action.payload,
-        filteredData: action.payload,
+        list: action.payload,
+      };
+    case FILTER:
+      return {
+        ...state,
+        visibilityFilter: action.payload,
+      };
+    case ADD:
+      return {
+        ...state,
+        list: action.payload,
+
       };
     default:
       return state;
   }
 };
 
-export default contactList;
+export default listReducer;
