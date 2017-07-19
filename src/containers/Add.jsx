@@ -9,7 +9,7 @@ function mapStateToProps(state) {
       id: state.listReducer.list.length,
       name: '',
       number: '',
-      image: 'http://via.placeholder.com/150x150/' } };
+      image: 'http://lorempixel.com/400/200/cats' } };
 }
 
 function mapDispatchToProps(dispatch) {

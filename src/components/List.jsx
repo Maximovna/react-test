@@ -12,9 +12,9 @@ class List extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="list-container">
         <input
-          className="form-control"
+          styleName="form-control"
           placeholder="Who are you looking for?"
           onChange={this.filterHadler}
         />

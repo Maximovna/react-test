@@ -1,8 +1,19 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-import Dropzone from 'react-dropzone';
 
 class Form extends React.Component {
+  constructor(props) {
+    super();
+    if (props.routeParams.id) {
+      const newElem = props.contactList
+                .filter(value => (value.id === +props.routeParams.id));
+      props.setChanges(newElem[0]);
+    }
+  }
+
+  // componentWillMount() {
+  //
+  // }
 
   handleSubmit() {
     const newArray = this.props.contactList;
@@ -17,24 +28,17 @@ class Form extends React.Component {
   render() {
     return (
       <div>
-        <Dropzone
-          accept="image/*"
-          multiple={false}
-        >
-          <p>Upload The Photo</p>
-        </Dropzone>
+        <input type="file" name="img" accept="image/jpeg,image/png,image/gif" />
         Your new contact will be called: <input
           type="text"
           className="name"
-          placeholder="Enter the new name"
-          defaultValue=""
+          placeholder={this.props.elem.name}
           onChange={(e) => { this.props.elem.name = e.target.value; }}
         />
         And its phone number will be: <input
-          type="number"
+          type="text"
           className="phone-number"
-          placeholder="Enter the new phone number"
-          defaultValue=""
+          placeholder={this.props.elem.number}
           onChange={(e) => this.props.elem.number = e.target.value}
         />
         <button

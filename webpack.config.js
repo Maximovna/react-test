@@ -1,4 +1,4 @@
-// const webpack = require('./node_modules/webpack');
+const webpack = require('./node_modules/webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -27,9 +27,9 @@ const config = {
         presets: ['es2015', 'react', 'stage-2'],
       },
     }, {
-      test: /\.styl$/,
+      test: /\.css$/,
       use: ExtractTextPlugin.extract({
-        loader: ['css-loader'],
+        loader: ['css-loader?importLoader=1&modules&localIdentName=[path]___[name]__[local]___[hash:base64:5]'],
         fallback: 'style-loader',
         publicPath: '/dist',
       }),

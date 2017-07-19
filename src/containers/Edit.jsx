@@ -5,7 +5,7 @@ import { editItem } from '../actions';
 function mapStateToProps(state) {
   return {
     contactList: state.listReducer.list,
-    elem: { name: '', number: '' },
+    elem: state.listReducer.edit,
   };
 }
 

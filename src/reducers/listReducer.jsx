@@ -4,32 +4,38 @@ const initialState = {
   list: [
     {
       id: 0,
-      image: 'http://via.placeholder.com/150x150/',
+      image: 'http://lorempixel.com/400/200/cats',
       name: 'Matvei',
       number: '+375446669966',
     }, {
       id: 1,
-      image: 'http://via.placeholder.com/150x150/',
+      image: 'http://lorempixel.com/400/200/cats',
       name: 'Maria',
       number: '+375449996699',
     }, {
       id: 2,
-      image: 'http://via.placeholder.com/150x150/',
+      image: 'http://lorempixel.com/400/200/cats',
       name: 'Valera',
       number: '+375443336669',
     }, {
       id: 3,
-      image: 'http://via.placeholder.com/150x150/',
+      image: 'http://lorempixel.com/400/200/cats',
       name: 'FurryGod',
       number: '+375299090900',
     }, {
       id: 4,
-      image: 'http://via.placeholder.com/150x150/',
+      image: 'http://lorempixel.com/400/200/cats',
       name: 'Siel Phantomhive',
       number: '+375266666900',
     },
   ],
   visibilityFilter: '',
+  edit: {
+    id: 0,
+    image: 'http://lorempixel.com/400/200/cats',
+    name: '',
+    number: '',
+  },
 };
 
 const listReducer = (state = initialState, action) => {
@@ -53,7 +59,7 @@ const listReducer = (state = initialState, action) => {
     case EDIT:
       return {
         ...state,
-        list: action.payload,
+        edit: action.payload,
 
       };
 
