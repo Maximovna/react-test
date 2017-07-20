@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
+import styles from '../style.css';
 
 class Form extends React.Component {
   constructor(props) {
@@ -10,10 +11,6 @@ class Form extends React.Component {
       props.setChanges(newElem[0]);
     }
   }
-
-  // componentWillMount() {
-  //
-  // }
 
   handleSubmit() {
     const newArray = this.props.contactList;
@@ -27,31 +24,49 @@ class Form extends React.Component {
   }
   render() {
     return (
-      <div>
-        <input type="file" name="img" accept="image/jpeg,image/png,image/gif" />
-        Your new contact will be called: <input
-          type="text"
-          className="name"
-          placeholder={this.props.elem.name}
-          onChange={(e) => { this.props.elem.name = e.target.value; }}
-        />
-        And its phone number will be: <input
-          type="text"
-          className="phone-number"
-          placeholder={this.props.elem.number}
-          onChange={(e) => this.props.elem.number = e.target.value}
-        />
-        <button
-          className="submit"
-          onClick={() => {
-            (this.props.routeParams.id) ? this.handleChange() : this.handleSubmit();
-          }}
-        >
-          <Link to="/">
-        Submit
+      <div className={styles.formContainer}>
+        <div className={styles.form}>
+          <p>Upload a photo</p>
+          <input
+            type="file"
+            id="hidden"
+            className={styles.file}
+            name="img"
+            accept="image/jpeg,image/png,image/gif"
+          />
+          <label htmlFor="hidden" className={styles.select}>Select file</label>
+          <div className={styles.name}>
+            <p>Your new contact will be called:</p> <input
+              type="text"
+              className={styles.enterName}
+              placeholder={this.props.elem.name}
+              onChange={(e) => { this.props.elem.name = e.target.value; }}
+            />
+          </div>
+          <p>And its phone number will be:</p> <input
+            type="text"
+            className={styles.enterNumber}
+            placeholder={this.props.elem.number}
+            onChange={(e) => this.props.elem.number = e.target.value}
+          />
+          <div>
+            <button
+              className={styles.submit}
+              onClick={() => {
+                (this.props.routeParams.id) ? this.handleChange() : this.handleSubmit();
+              }}
+            >
+              <Link to="/">
+          Submit
         </Link>
-        </button>
-        <Link to="/"> Back </Link>
+            </button>
+            <button
+              className={styles.back}
+            >
+              <Link to="/"> Back </Link>
+            </button>
+          </div>
+        </div>
       </div>
     );
   }

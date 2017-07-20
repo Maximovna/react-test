@@ -16,9 +16,13 @@ input {
   font-size: 20px;
 }
 
-.form-control {
-  background: pink;
+.add {
+  background-image: linear-gradient(to right, #eaf6f8, #874ec4);
+  width: 250px;
+  font-size: 20px;
+  font-weight: bold;
 }
+
 
 button {
  height: 50px;
@@ -36,11 +40,74 @@ li {
   border: 1px solid #000;
   margin: 2px;
   font-size: 25px;
-  background-image: linear-gradient(to right, #eaf6f8, #eaeff8);
+  position: relative;
 }
 
 a {
   text-decoration: none;
   color: #000;
   font-size: 15px;
+}
+.dataContainer {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 15px;
+  line-height: 50px;
+}
+span {
+  font-weight: bold;
+}
+.buttonWrapper {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 50%;
+  text-align: right;
+  padding: 5px;
+}
+.remove,
+.edit {
+  font-weight: bold;
+  width: 200px;
+}
+
+.remove {
+  background-image: linear-gradient(to right, #822430, #f0430f);
+}
+
+.edit {
+  background-image: linear-gradient(to right, #eaf6f8, #874ec4);
+}
+
+.form {
+  margin-top: 150px;
+  text-align: center;
+  font-size: 30px;
+}
+
+
+.file {
+  width: 400px;
+  text-align: center;
+  display: none;
+}
+.select {
+  display: inline-block;
+  width: 400px;
+  height: 50px;
+  line-height: 50px;
+  border: 1px solid #8c198c;
+  border-radius: 7px;
+  background-image: linear-gradient(to right, #eaf6f8, #874ec4);
+}
+
+.enterName,
+.enterNumber {
+  width: 400px;
+}
+
+.submit,
+.back {
+  width: 195px;
+  background-image: linear-gradient(to right, #eaf6f8, #874ec4);
 }

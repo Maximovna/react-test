@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
+import styles from '../style.css';
 
 class List extends React.Component {
 
@@ -14,26 +15,30 @@ class List extends React.Component {
     return (
       <div className="list-container">
         <input
-          styleName="form-control"
+          className="form-control"
           placeholder="Who are you looking for?"
           onChange={this.filterHadler}
         />
-        <button className="add"><Link to="add"> New </Link></button>
+        <button className={styles.add}><Link to="add"> Add new contact </Link></button>
         <ul className="list">
           {this.props.contactList
             .filter(list => list.name.indexOf(this.props.visibilityFilter) !== -1)
             .map((list) => (
               <li key={list.id}><img src={list.image} alt="" />
-                <p>Name: {list.name}.</p>
-                <p>Phone Number: {list.number}</p>
-                <button
-                  key={list.id}
-                  className="delete-item"
-                  onClick={() => this.deletionHandler(list)}
-                >
-              Delete Contact
+                <div className={styles.dataContainer}>
+                  <p><span>Name: </span>{list.name}</p>
+                  <p><span>Phone Number: </span>{list.number}</p>
+                </div>
+                <div className={styles.buttonWrapper}>
+                  <button className={styles.edit}><Link to={`/change/${list.id}`}> Edit </Link></button>
+                  <button
+                    key={list.id}
+                    className={styles.remove}
+                    onClick={() => this.deletionHandler(list)}
+                  >
+              Delete contact
               </button>
-                <button className="edit"><Link to={`/change/${list.id}`}> Edit </Link></button>
+                </div>
               </li>
           ))}
         </ul>
