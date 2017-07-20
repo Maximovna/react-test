@@ -15,4 +15,4 @@ export const deleteHandler = (array, elem) => {
   return deleteItem(tmp);
 };
 export const addItem = (newElem) => ({ type: ADD, payload: newElem });
-export const editItem = (elem) => ({ type: EDIT, payload: elem });
+export const editList = (array) => ({ type: EDIT, payload: array });

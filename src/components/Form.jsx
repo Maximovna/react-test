@@ -5,66 +5,65 @@ import styles from '../style.css';
 class Form extends React.Component {
   constructor(props) {
     super();
+    this.elem = props.elem;
     if (props.routeParams.id) {
       const newElem = props.contactList
                 .filter(value => (value.id === +props.routeParams.id));
-      props.setChanges(newElem[0]);
+      this.elem = newElem[0];
     }
   }
 
   handleSubmit() {
     const newArray = this.props.contactList;
-    newArray.push(this.props.elem);
+    newArray.push(this.elem);
     this.props.setNew(newArray);
   }
   handleChange() {
     const changedArray = this.props.contactList;
-    changedArray.splice(this.props.routeParams.id, 1, this.props.elem);
+    changedArray.splice(this.props.routeParams.id, 1, this.elem);
     this.props.setChanges(changedArray);
   }
   render() {
     return (
       <div className={styles.formContainer}>
         <div className={styles.form}>
-          <p>Upload a photo</p>
+          <p>Put a photo url</p>
           <input
-            type="file"
+            type="text"
             id="hidden"
-            className={styles.file}
+            className={styles.picture}
             name="img"
-            accept="image/jpeg,image/png,image/gif"
+            placeholder="ye, put it right here"
+            onChange={(e) => { this.elem.image = e.target.value; }}
           />
-          <label htmlFor="hidden" className={styles.select}>Select file</label>
           <div className={styles.name}>
             <p>Your new contact will be called:</p> <input
               type="text"
               className={styles.enterName}
-              placeholder={this.props.elem.name}
-              onChange={(e) => { this.props.elem.name = e.target.value; }}
+              placeholder={this.elem.name}
+              onChange={(e) => { this.elem.name = e.target.value; }}
             />
           </div>
           <p>And its phone number will be:</p> <input
             type="text"
             className={styles.enterNumber}
-            placeholder={this.props.elem.number}
-            onChange={(e) => this.props.elem.number = e.target.value}
+            placeholder={this.elem.number}
+            onChange={(e) => this.elem.number = e.target.value}
           />
           <div>
-            <button
+            <Link
               className={styles.submit}
               onClick={() => {
                 (this.props.routeParams.id) ? this.handleChange() : this.handleSubmit();
               }}
+              to="/"
             >
-              <Link to="/">
           Submit
         </Link>
-            </button>
-            <button
+            <Link
               className={styles.back}
-            >
-              <Link to="/"> Back </Link>
-            </button>
+              to="/"
+            > Back </Link>
           </div>
         </div>
       </div>
@@ -81,4 +80,3 @@ Form.propTypes = {
 };
 
 export default Form;
-//this.props.routeParams.id

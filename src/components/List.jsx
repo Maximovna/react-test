@@ -19,7 +19,9 @@ class List extends React.Component {
           placeholder="Who are you looking for?"
           onChange={this.filterHadler}
         />
-        <button className={styles.add}><Link to="add"> Add new contact </Link></button>
+        <Link
+          className={styles.add}to="add"
+        > Add new contact </Link>
         <ul className="list">
           {this.props.contactList
             .filter(list => list.name.indexOf(this.props.visibilityFilter) !== -1)
@@ -30,7 +32,10 @@ class List extends React.Component {
                   <p><span>Phone Number: </span>{list.number}</p>
                 </div>
                 <div className={styles.buttonWrapper}>
-                  <button className={styles.edit}><Link to={`/change/${list.id}`}> Edit </Link></button>
+                  <Link
+                    className={styles.edit}
+                    to={`/change/${list.id}`}
+                  > Edit </Link>
                   <button
                     key={list.id}
                     className={styles.remove}

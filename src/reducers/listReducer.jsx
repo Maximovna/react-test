@@ -30,12 +30,6 @@ const initialState = {
     },
   ],
   visibilityFilter: '',
-  edit: {
-    id: 0,
-    image: 'http://lorempixel.com/400/200/cats',
-    name: '',
-    number: '',
-  },
 };
 
 const listReducer = (state = initialState, action) => {
@@ -59,7 +53,7 @@ const listReducer = (state = initialState, action) => {
     case EDIT:
       return {
         ...state,
-        edit: action.payload,
+        list: action.payload,
 
       };
 

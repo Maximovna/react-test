@@ -1,18 +1,22 @@
 import { connect } from 'react-redux';
 import Form from '../components/Form';
-import { editItem } from '../actions';
+import { editList } from '../actions';
 
 function mapStateToProps(state) {
   return {
     contactList: state.listReducer.list,
-    elem: state.listReducer.edit,
+    elem: {
+      id: state.listReducer.list.length,
+      name: '',
+      number: '',
+      image: 'http://lorempixel.com/400/200/cats' },
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     setChanges: (elem) => {
-      dispatch(editItem(elem));
+      dispatch(editList(elem));
     },
   };
 }
