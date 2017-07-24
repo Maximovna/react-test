@@ -16,12 +16,12 @@ class Form extends React.Component {
   handleSubmit() {
     const extendedList = this.props.contactList;
     extendedList.push(this.elem);
-    this.props.setNew(extendedList);
+    this.props.receiveNew(extendedList);
   }
   handleChange() {
     const changedList = this.props.contactList;
     changedList.splice(this.props.routeParams.id, 1, this.elem);
-    this.props.setChanges(changedList);
+    this.props.receiveChanges(changedList);
   }
   render() {
     return (
@@ -73,9 +73,12 @@ class Form extends React.Component {
 
 Form.propTypes = {
   contactList: PropTypes.array,
-  setNew: PropTypes.func,
-  setChanges: PropTypes.func,
+  receiveNew: PropTypes.func,
+  receiveChanges: PropTypes.func,
   elem: PropTypes.object,
+  routeParams: PropTypes.shape({
+    id: PropTypes.number,
+  }),
 
 };
 
