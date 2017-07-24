@@ -15,7 +15,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    setChanges: (elem) => {
+    receiveChanges: (elem) => {
       dispatch(editList(elem));
     },
   };

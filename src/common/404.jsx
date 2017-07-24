@@ -1,8 +1,9 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React from 'react';
+import { connect } from 'react-redux';
 
 
 const NotFound = () => (
-    <h2>NOT FOUND! 404</h2>
+  <h2>NOT FOUND! 404</h2>
 );
-export default connect()(NotFound)
+
+export default connect()(NotFound);

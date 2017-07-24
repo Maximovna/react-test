@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import List from '../components/List';
-import { deleteHandler, filterList } from '../actions';
+import { removeFromList, filterList } from '../actions';
 
 function mapStateToProps(state) {
   return { contactList: state.listReducer.list,
@@ -10,15 +10,15 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    setDeletion: (list, elem) => {
-      dispatch(deleteHandler(list, elem));
+    removeContact: (list, elem) => {
+      dispatch(removeFromList(list, elem));
     },
-    setFilter: (visibilityFilter) => {
+    changeFilter: (visibilityFilter) => {
       dispatch(filterList(visibilityFilter));
     },
   };
 }
 
-const SetList = connect(mapStateToProps, mapDispatchToProps)(List);
+const Contacts = connect(mapStateToProps, mapDispatchToProps)(List);
 
-export default SetList;
+export default Contacts;

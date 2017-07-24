@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Form from '../components/Form';
-import { addItem } from '../actions';
+import { addToList } from '../actions';
 
 function mapStateToProps(state) {
   return {
@@ -14,8 +14,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    setNew: (newElem) => {
-      dispatch(addItem(newElem));
+    receiveNew: (newElem) => {
+      dispatch(addToList(newElem));
     },
   };
 }
