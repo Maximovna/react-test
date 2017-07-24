@@ -1,22 +1,18 @@
-
+export const DELETE = 'DELETE';
 export const FILTER = 'FILTER';
-export const DELETE = 'DELETE'
+export const ADD = 'ADD';
+export const EDIT = 'EDIT';
 
-export const filters = (value) => {
-  return {type: FILTER, payload: value}
-}
-
-export function doFilter(data, pattern) {
-  let tmp = [];
-  data.forEach(function(value) {
-    if (value.name.indexOf(pattern) !== -1)
+export const deleteItem = (list) => ({ type: DELETE, payload: list });
+export const filterList = (visibilityFilter) => ({ type: FILTER, payload: visibilityFilter });
+export const deleteHandler = (array, elem) => {
+  const tmp = [];
+  array.forEach(value => {
+    if (elem.id !== value.id) {
       tmp.push(value);
-
     }
-  )
-  return filters(tmp)
-}
-
-export const deleteItem = (data) => {
-  return {type: DELETE, payload: data}
-}
+  });
+  return deleteItem(tmp);
+};
+export const addItem = (newElem) => ({ type: ADD, payload: newElem });
+export const editList = (array) => ({ type: EDIT, payload: array });

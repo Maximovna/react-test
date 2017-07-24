@@ -1,43 +1,63 @@
-import React, {PropTypes} from 'react'
-import {connect} from 'react-redux';
-// import {bindActionCreators} from 'redux';
-import {filters} from '../actions';
-import {deleteItem} from '../actions';
-import SetList from '../containers/SetList';
-import {initialState} from '../reducers';
-import {contactList} from '../reducers';
+import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
+import styles from '../style.css';
 
 class List extends React.Component {
-  constructor(props) {
-    super()
+
+  filterHadler = e => {
+    this.props.setFilter(e.target.value);
   }
 
-  componentDidMount() {
-    this.props.setFilter(this.props.initData, '')
+  deletionHandler = (list) => {
+    this.props.setDeletion(this.props.contactList, list);
   }
-
   render() {
-    debugger
     return (
-      <div>
-        <input className="form-control" placeholder="Who are you looking for?" onChange={(e) => this.props.setFilter(this.props.initData, e.target.value)}/>
-        <ul className='init-list'>
-          {this.props.filteredData.map((data, id) => {
-            return (
-              <li key={data.id}><img src={data.image}/>
-                <p>Name: {data.name}.</p>
-                <p>Phone Number: {data.number}</p>
-                <button key={data.id} className="delete-item" onClick={() => this.props.setDeletion(this.props.initData)}>
-                  Delete Contact
-                </button>
+      <div className="list-container">
+        <input
+          className="form-control"
+          placeholder="Who are you looking for?"
+          onChange={this.filterHadler}
+        />
+        <Link
+          className={styles.add}to="add"
+        > Add new contact </Link>
+        <ul className="list">
+          {this.props.contactList
+            .filter(list => list.name.indexOf(this.props.visibilityFilter) !== -1)
+            .map((list) => (
+              <li key={list.id}><img src={list.image} alt="" />
+                <div className={styles.dataContainer}>
+                  <p><span>Name: </span>{list.name}</p>
+                  <p><span>Phone Number: </span>{list.number}</p>
+                </div>
+                <div className={styles.buttonWrapper}>
+                  <Link
+                    className={styles.edit}
+                    to={`/change/${list.id}`}
+                  > Edit </Link>
+                  <button
+                    key={list.id}
+                    className={styles.remove}
+                    onClick={() => this.deletionHandler(list)}
+                  >
+              Delete contact
+              </button>
+                </div>
               </li>
-
-            )
-          })}
+          ))}
         </ul>
 
       </div>
-    )
+    );
   }
 }
-export default List
+
+List.propTypes = {
+  contactList: PropTypes.array,
+  visibilityFilter: PropTypes.string,
+  setDeletion: PropTypes.func,
+  setFilter: PropTypes.func,
+};
+
+export default List;
