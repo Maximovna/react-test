@@ -5,11 +5,11 @@ import styles from '../style.css';
 class List extends React.Component {
 
   filterHadler = e => {
-    this.props.setFilter(e.target.value);
+    this.props.changeFilter(e.target.value);
   }
 
   deletionHandler = (list) => {
-    this.props.setDeletion(this.props.contactList, list);
+    this.props.removeContact(this.props.contactList, list);
   }
   render() {
     return (
@@ -56,8 +56,8 @@ class List extends React.Component {
 List.propTypes = {
   contactList: PropTypes.array,
   visibilityFilter: PropTypes.string,
-  setDeletion: PropTypes.func,
-  setFilter: PropTypes.func,
+  removeContact: PropTypes.func,
+  changeFilter: PropTypes.func,
 };
 
 export default List;

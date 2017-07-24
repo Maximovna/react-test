@@ -5,7 +5,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import configureStore from './store/configureStore';
 import App from './components/App';
-import SetList from './containers/SetList';
+import Contacts from './containers/Contacts';
 import Edit from './containers/Edit';
 import Add from './containers/Add';
 import NotFound from './common/404';
@@ -17,7 +17,7 @@ render(
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={App}>
-        <IndexRoute component={SetList} />
+        <IndexRoute component={Contacts} />
         <Route path="change/:id" component={Edit} />
         <Route path="add" component={Add} />
       </Route>
@@ -25,5 +25,3 @@ render(
     </Router>
   </Provider>, document.getElementById('root')
 );
-
-//    <Route path="change" component={Form} />

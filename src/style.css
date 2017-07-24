@@ -9,6 +9,7 @@
 body {
   text-align: center;
 }
+
 input {
   width: 30%;
   height: 50px;
@@ -18,12 +19,6 @@ input {
   margin: 5px 0 5px 0;
   font-size: 20px;
 }
-
-.add {
-  background-image: linear-gradient(to right, #eaf6f8, #874ec4);
-  font-weight: bold;
-}
-
 
 button {
  height: 50px;
@@ -38,6 +33,7 @@ button {
 ul {
   text-align: left;
 }
+
 li {
   padding: 10px;
   width: 100%;
@@ -46,25 +42,35 @@ li {
   font-size: 25px;
   position: relative;
 }
+
 img {
   width: 400px;
   height: 200px;
   background-size: cover;
 }
+
 a {
   text-decoration: none;
   color: #000;
   font-size: 15px;
 }
+
+span {
+  font-weight: bold;
+}
+
+.add {
+  background-image: linear-gradient(to right, #eaf6f8, #874ec4);
+  font-weight: bold;
+}
+
 .dataContainer {
   display: inline-block;
   vertical-align: top;
   margin-left: 15px;
   line-height: 50px;
 }
-span {
-  font-weight: bold;
-}
+
 .buttonWrapper {
   position: absolute;
   right: 0;
@@ -103,7 +109,6 @@ span {
   text-align: center;
   font-size: 30px;
 }
-
 
 .file {
   width: 400px;

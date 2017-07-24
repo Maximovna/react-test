@@ -7,21 +7,21 @@ class Form extends React.Component {
     super();
     this.elem = props.elem;
     if (props.routeParams.id) {
-      const newElem = props.contactList
+      const changingElem = props.contactList
                 .filter(value => (value.id === +props.routeParams.id));
-      this.elem = newElem[0];
+      this.elem = changingElem[0];
     }
   }
 
   handleSubmit() {
-    const newArray = this.props.contactList;
-    newArray.push(this.elem);
-    this.props.setNew(newArray);
+    const extendedList = this.props.contactList;
+    extendedList.push(this.elem);
+    this.props.setNew(extendedList);
   }
   handleChange() {
-    const changedArray = this.props.contactList;
-    changedArray.splice(this.props.routeParams.id, 1, this.elem);
-    this.props.setChanges(changedArray);
+    const changedList = this.props.contactList;
+    changedList.splice(this.props.routeParams.id, 1, this.elem);
+    this.props.setChanges(changedList);
   }
   render() {
     return (
